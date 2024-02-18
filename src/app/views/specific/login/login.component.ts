@@ -9,6 +9,7 @@ import { BaseComponent } from 'src/app/core/components/base/base/base.component'
 })
 export class LoginComponent extends BaseComponent {
   constructor(private pgRoute:Router) {
+    
     super(pgRoute);
   }
 }

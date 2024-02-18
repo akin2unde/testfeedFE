@@ -4,6 +4,9 @@ import { MainComponent } from './main.component';
 import { RouterModule, Routes, mapToCanActivate } from '@angular/router';
 import { DashboardComponent } from 'src/app/views/specific/dashboard/dashboard.component';
 import { AuthGuard } from 'src/app/core/services/authGuard';
+import { SideBarModule } from '../../side-bar/side-bar.module';
+import { TopBarModule } from '../../top-bar/top-bar.module';
+import { FooterModule } from '../../footer/footer.module';
 
 
 export const appRoutes: Routes = [
@@ -24,6 +27,22 @@ export const appRoutes: Routes = [
             (m) => m.DashboardModule
           ),
       },
+      {
+        path: 'project',
+        canActivate: mapToCanActivate([AuthGuard]),
+        loadChildren: () =>
+          import('../../../../views/specific/project/project.module').then(
+            (m) => m.ProjectModule
+          ),
+      },
+      {
+        path: 'task',
+        canActivate: mapToCanActivate([AuthGuard]),
+        loadChildren: () =>
+          import('../../../../views/specific/task/task.module').then(
+            (m) => m.TaskModule
+          ),
+      },
     ],
   },
 ];
@@ -32,7 +51,9 @@ export const appRoutes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(appRoutes),
-
+    SideBarModule,
+    FooterModule,
+    TopBarModule
   ],
   exports: [RouterModule],
 

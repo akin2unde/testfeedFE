@@ -1,10 +1,9 @@
-<div class="app-layout">
-    <!-- <app-sidebar></app-sidebar> -->
-    <div class="app-content">
-      <!-- <app-topbar></app-topbar> -->
-      
-  
-      <main class="app_bg main-section">
+<div class="main-container">
+    <app-side-bar class="sidebar"></app-side-bar>
+    <app-top-bar class="header"></app-top-bar>
+
+     <div class="main  bg-primary-100 h-full">
+      <!-- <main class="app_bg main-section "> -->
         <router-outlet></router-outlet>
         <!-- <p-blockUI [blocked]="isLoading"></p-blockUI> -->
         <!-- <p-confirmDialog #cd [style]="{width: '25vw'}">
@@ -24,8 +23,9 @@
                 </div>
         </ng-template>
         </p-toast> -->
-      </main>
+      <!-- </main> -->
       <!-- footer -->
     </div>
+    <app-footer class="footer"></app-footer>
   </div>
   

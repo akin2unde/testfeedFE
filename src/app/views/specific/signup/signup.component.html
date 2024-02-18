@@ -1,1 +1,17 @@
-<p>signup works!</p>
+<div class="bg-primary-100 h-full grid grid-cols-2">
+    <div class="overflow-hidden rounded-lg">
+        <img [src]="getSvg('tester.svg',true)" class="object-contain "/>
+    </div>
+  <div class=" flex flex-col items-center mt-32 gap-2">
+    <h1 class="text-primary-darkest text-2xl font-bold">Sign Up</h1>
+    <div class="flex flex-col gap-1 ">
+         <label class="text-sm" for="inp_username">Username</label>
+         <input class="tb" id="inp_username"/>
+    </div>
+    <div class="flex flex-col gap-1 ">
+        <label class="text-sm" for="inp_password">Password</label>
+        <input type="password" class="tb" id="inp_password"/>
+   </div>
+    <button class="btn m-4 w-24 text-lg">Sign up</button>
+</div>  
+</div>

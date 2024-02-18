@@ -1,1 +1,60 @@
-<p>dashboard works!</p>
+<div class="w-full h-full overflow-auto flex flex-col gap-2">
+<div class="rounded-2xl bg-primary-300 p-3 flex items-center">
+ <div class="gap-3 w-[70%] p-4">
+    <p class="font-extrabold text-xl">Welcome back Akintunde</p>
+    <p class="text-md  font-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum ipsa magni, repudiandae nobis ipsam reiciendis odit sunt dicta nihil aspernatur animi impedit quas. Sapiente perspiciatis ab corporis ratione dolorum deleniti.</p>
+ </div>
+ <div class="overflow-hidden rounded-lg w-[30%]">
+    <img [src]="getSvg('img2.svg',true)" class="object-contain w-[60%]"/>
+</div>
+</div>
+
+ <div class=" bg-white p-4 m-2 rounded-lg flex flex-row gap-6 ">
+    <div class="bg-primary-100 items-center p-4 flex gap-[2px] text-primary-400 rounded-2xl">
+        <svg class="w-6 h-6 text-red-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18 17v-2h1a1 1 0 0 0 0-2h-1a6 6 0 0 0-.4-1H17a2 2 0 0 0 2-2V8a1 1 0 0 0-2 0v2h-.5l-.5-.5V8a4 4 0 0 0-1-2.6l.7-.7c.2-.2.3-.4.3-.7V3a1 1 0 0 0-2 0v.6l-.7.6c-.8-.3-1.8-.3-2.6 0l-.7-.6V3a1 1 0 0 0-2 0v1c0 .3.1.5.3.7l.7.7A4 4 0 0 0 8 8v1.5l-.5.5H7V8a1 1 0 0 0-2 0v2a2 2 0 0 0 2 2h-.7a6 6 0 0 0-.2 1H5a1 1 0 0 0 0 2h1v2a2 2 0 0 0-2 2v2a1 1 0 1 0 2 0v-2h.8a6 6 0 0 0 4.2 3V12a1 1 0 0 1 2 0v10a6 6 0 0 0 4.2-3h.8v2a1 1 0 0 0 2 0v-2a2 2 0 0 0-2-2Zm-4-8.7a5.5 5.5 0 0 0-3-.3v.1a6 6 0 0 0-1 .3V8a2 2 0 1 1 4 0v.3Z"/>
+        </svg>
+        <span class="cursor-pointer uppercase text-xs text-primary-darkest font-bold relative mr-3">
+            Bugs
+            <span class="rounded-2xl bg-red-500 text-white w-6 h-6 text-xs p-[5px] absolute top-[-15px] right-[-20px]" >50</span>
+        </span>
+
+        <svg class="ml-5 w-6 h-6 text-pink-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18 17v-2h1a1 1 0 0 0 0-2h-1a6 6 0 0 0-.4-1H17a2 2 0 0 0 2-2V8a1 1 0 0 0-2 0v2h-.5l-.5-.5V8a4 4 0 0 0-1-2.6l.7-.7c.2-.2.3-.4.3-.7V3a1 1 0 0 0-2 0v.6l-.7.6c-.8-.3-1.8-.3-2.6 0l-.7-.6V3a1 1 0 0 0-2 0v1c0 .3.1.5.3.7l.7.7A4 4 0 0 0 8 8v1.5l-.5.5H7V8a1 1 0 0 0-2 0v2a2 2 0 0 0 2 2h-.7a6 6 0 0 0-.2 1H5a1 1 0 0 0 0 2h1v2a2 2 0 0 0-2 2v2a1 1 0 1 0 2 0v-2h.8a6 6 0 0 0 4.2 3V12a1 1 0 0 1 2 0v10a6 6 0 0 0 4.2-3h.8v2a1 1 0 0 0 2 0v-2a2 2 0 0 0-2-2Zm-4-8.7a5.5 5.5 0 0 0-3-.3v.1a6 6 0 0 0-1 .3V8a2 2 0 1 1 4 0v.3Z"/>
+        </svg>
+        <span class="cursor-pointer uppercase text-xs text-primary-darkest font-bold relative mr-3">
+            Pending tasks
+            <span class="rounded-2xl bg-pink-500 text-white w-6 h-6 text-xs p-[5px] absolute top-[-15px] right-[-20px]" >50</span>
+        </span>
+       
+        <svg class=" ml-5 w-6 h-6 text-primary-dark dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" d="M12 2a3 3 0 0 0-2.1.9l-.9.9a1 1 0 0 1-.7.3H7a3 3 0 0 0-3 3v1.2c0 .3 0 .5-.2.7l-1 .9a3 3 0 0 0 0 4.2l1 .9c.2.2.3.4.3.7V17a3 3 0 0 0 3 3h1.2c.3 0 .5 0 .7.2l.9 1a3 3 0 0 0 4.2 0l.9-1c.2-.2.4-.3.7-.3H17a3 3 0 0 0 3-3v-1.2c0-.3 0-.5.2-.7l1-.9a3 3 0 0 0 0-4.2l-1-.9a1 1 0 0 1-.3-.7V7a3 3 0 0 0-3-3h-1.2a1 1 0 0 1-.7-.2l-.9-1A3 3 0 0 0 12 2Zm3.7 7.7a1 1 0 1 0-1.4-1.4L10 12.6l-1.3-1.3a1 1 0 0 0-1.4 1.4l2 2c.4.4 1 .4 1.4 0l5-5Z" clip-rule="evenodd"/>
+        </svg>        
+        <span class="cursor-pointer uppercase text-xs text-primary-darkest font-bold relative mr-3">
+            Completed tasks
+            <span class="rounded-2xl bg-primary-darkest text-white w-6 h-6 text-xs p-[5px] absolute top-[-15px] right-[-20px]" >50</span>
+        </span>    
+
+        <svg class=" ml-5 w-6 h-6 text-orange-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" d="M12 2a3 3 0 0 0-2.1.9l-.9.9a1 1 0 0 1-.7.3H7a3 3 0 0 0-3 3v1.2c0 .3 0 .5-.2.7l-1 .9a3 3 0 0 0 0 4.2l1 .9c.2.2.3.4.3.7V17a3 3 0 0 0 3 3h1.2c.3 0 .5 0 .7.2l.9 1a3 3 0 0 0 4.2 0l.9-1c.2-.2.4-.3.7-.3H17a3 3 0 0 0 3-3v-1.2c0-.3 0-.5.2-.7l1-.9a3 3 0 0 0 0-4.2l-1-.9a1 1 0 0 1-.3-.7V7a3 3 0 0 0-3-3h-1.2a1 1 0 0 1-.7-.2l-.9-1A3 3 0 0 0 12 2Zm3.7 7.7a1 1 0 1 0-1.4-1.4L10 12.6l-1.3-1.3a1 1 0 0 0-1.4 1.4l2 2c.4.4 1 .4 1.4 0l5-5Z" clip-rule="evenodd"/>
+        </svg>        
+        <span class=" cursor-pointer uppercase text-xs text-primary-darkest font-bold relative mr-3">
+            Awaiting Test
+            <span class="rounded-2xl bg-orange-500 text-white w-6 h-6 text-xs p-[5px] absolute top-[-15px] right-[-20px]" >50</span>
+        </span>    
+    
+
+    </div>
+
+    <div class="bg-primary-100 items-center p-4 flex gap-[2px] text-primary-400 rounded-2xl">
+        <svg class="w-6 h-6 text-blue-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18 17v-2h1a1 1 0 0 0 0-2h-1a6 6 0 0 0-.4-1H17a2 2 0 0 0 2-2V8a1 1 0 0 0-2 0v2h-.5l-.5-.5V8a4 4 0 0 0-1-2.6l.7-.7c.2-.2.3-.4.3-.7V3a1 1 0 0 0-2 0v.6l-.7.6c-.8-.3-1.8-.3-2.6 0l-.7-.6V3a1 1 0 0 0-2 0v1c0 .3.1.5.3.7l.7.7A4 4 0 0 0 8 8v1.5l-.5.5H7V8a1 1 0 0 0-2 0v2a2 2 0 0 0 2 2h-.7a6 6 0 0 0-.2 1H5a1 1 0 0 0 0 2h1v2a2 2 0 0 0-2 2v2a1 1 0 1 0 2 0v-2h.8a6 6 0 0 0 4.2 3V12a1 1 0 0 1 2 0v10a6 6 0 0 0 4.2-3h.8v2a1 1 0 0 0 2 0v-2a2 2 0 0 0-2-2Zm-4-8.7a5.5 5.5 0 0 0-3-.3v.1a6 6 0 0 0-1 .3V8a2 2 0 1 1 4 0v.3Z"/>
+        </svg>
+        <span class="uppercase text-xs text-primary-darkest font-bold relative mr-3">
+            Projects
+            <span class="rounded-2xl bg-blue-500 text-white w-6 h-6 text-xs p-[5px] absolute top-[-15px] right-[-20px]" >50</span>
+        </span>
+    </div>
+
+
+</div>

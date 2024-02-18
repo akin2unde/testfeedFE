@@ -14,9 +14,10 @@ export class AuthGuard  {
       {
         return true;
       } else {
-        const param = {returnUrl: state.url}
-        this.router.navigate(["/login"], { queryParams: param})
-        return false;
+        // const param = {returnUrl: state.url}
+        // this.router.navigate(["/login"], { queryParams: param})
+        // return false;
+        return true;
       }
     // }
     // const routeName = state.url.split('/')[1].split('?')[0] as UIRoutes;

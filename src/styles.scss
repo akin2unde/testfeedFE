@@ -7,6 +7,27 @@
 * {
     box-sizing: border-box;
   }
+  body {
+    margin: 0;
+  }
   .btn{
     @apply bg-control text-white rounded-xl p-2 shadow-sm cursor-pointer
+  }
+  .tb{
+    @apply  focus:text-primary-darkest
+             focus:border-primary-400
+              focus:outline-0
+               focus:shadow-utility
+                appearance-none
+                 rounded-lg p-2.5
+                  text-sm font-light
+                   text-primary-darkest
+                    bg-white bg-clip-padding
+                     border border-solid
+                      border-primary-200
+
+                      
+           
+                
+
   }

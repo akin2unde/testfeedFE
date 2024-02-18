@@ -1,2 +1,20 @@
-<p class="text-3xl font-bold underline text-primary bg-secondary-100">login works!</p>
-<button class="btn m-4">Hello</button>
+<!-- <p class="text-3xl font-bold underline text-primary bg-secondary-100">login works!</p>
+<button class="btn m-4">Hello</button> -->
+<div class="bg-primary-100 h-full grid grid-cols-2">
+    <div class="overflow-hidden rounded-lg">
+        <img [src]="getSvg('img1.svg',true)" class="object-contain "/>
+    </div>
+  <div class=" flex flex-col items-center mt-32 gap-2">
+    <h1 class="text-primary-darkest text-2xl font-bold">Login</h1>
+    <div class="flex flex-col gap-1 ">
+         <label class="text-sm" for="inp_username">Username</label>
+         <input class="tb" id="inp_username"/>
+    </div>
+    <div class="flex flex-col gap-1 ">
+        <label class="text-sm" for="inp_password">Password</label>
+        <input type="password" class="tb" id="inp_password"/>
+   </div>
+    <button class="btn m-4 w-24 text-lg">Log in</button>
+</div>  
+</div>
+

@@ -2,6 +2,7 @@ import { LocationStrategy, PathLocationStrategy,Location } from '@angular/common
 import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import Store, { AppKey } from 'src/app/core/utils/store';
+import { Util } from 'src/app/core/utils/util';
 import { User } from 'src/app/models/User';
 
 @Component({
@@ -37,7 +38,7 @@ export class BaseComponent implements OnInit {
 
   }
   getSvg(name:string,isImage:boolean=false){
-  //  return Util.getSvg(name,isImage);
+   return Util.getSvg(name,isImage);
   }
   goToPage(page:string, extra?:any){
     if(extra)
