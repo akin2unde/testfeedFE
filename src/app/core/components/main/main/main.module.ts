@@ -7,6 +7,7 @@ import { AuthGuard } from 'src/app/core/services/authGuard';
 import { SideBarModule } from '../../side-bar/side-bar.module';
 import { TopBarModule } from '../../top-bar/top-bar.module';
 import { FooterModule } from '../../footer/footer.module';
+import { ToastModule } from 'primeng/toast';
 
 
 export const appRoutes: Routes = [
@@ -43,6 +44,22 @@ export const appRoutes: Routes = [
             (m) => m.TaskModule
           ),
       },
+      {
+        path: 'feature',
+        canActivate: mapToCanActivate([AuthGuard]),
+        loadChildren: () =>
+          import('../../../../views/specific/feature/feature.module').then(
+            (m) => m.FeatureModule
+          ),
+      },
+      {
+        path: 'request',
+        canActivate: mapToCanActivate([AuthGuard]),
+        loadChildren: () =>
+          import('../../../../views/specific/request/request.module').then(
+            (m) => m.RequestModule
+          ),
+      },
     ],
   },
 ];
@@ -53,7 +70,8 @@ export const appRoutes: Routes = [
     RouterModule.forChild(appRoutes),
     SideBarModule,
     FooterModule,
-    TopBarModule
+    TopBarModule,
+    ToastModule
   ],
   exports: [RouterModule],
 

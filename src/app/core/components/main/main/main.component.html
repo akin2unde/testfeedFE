@@ -14,15 +14,20 @@
               <p-button class="w-full p-2" styleClass="font-bold w-full border-round gap-1 text-black-alpha-90 app-bg-primary-1 border-white-alpha-90 p-3 px-4" label="Yes" (click)="cd.accept()"></p-button>
               <p-button class="w-full p-2" styleClass="font-bold w-full border-round gap-1 text-black-alpha-90 bg-white-alpha-90 border-black-alpha-10  p-3 px-4 " label="No" (click)="cd.reject()"></p-button>
           </ng-template>
-        </p-confirmDialog>
-        <p-toast   position="bottom-right" >
+        </p-confirmDialog> -->
+        <p-toast   position="top-center" >
           <ng-template let-message pTemplate="message">
                 <div  class="flex-row w-full align-items-center flex-wrap">
+                  <div class="flex gap-2 items-center"> 
                     <img [src]="notifIcon"  style="width: 30px; height:30px;"/>
+                    <span class="text-green-800">{{message.summary}}</span>
+                  </div>
                     <p class="flex-1 mx-2 my-0">{{message.detail}}</p>
                 </div>
         </ng-template>
-        </p-toast> -->
+        </p-toast>
+        <!-- <p-toast position="top-center" key="tc"></p-toast> -->
+
       <!-- </main> -->
       <!-- footer -->
     </div>

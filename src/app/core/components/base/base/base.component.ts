@@ -1,9 +1,12 @@
 import { LocationStrategy, PathLocationStrategy,Location } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppUtilService } from 'src/app/core/services/app-util.service';
 import Store, { AppKey } from 'src/app/core/utils/store';
 import { Util } from 'src/app/core/utils/util';
 import { User } from 'src/app/models/User';
+import { Notification } from 'src/app/models/notification';
+import { NotificationType } from 'src/app/models/notification-type';
 
 @Component({
 
@@ -29,7 +32,7 @@ export class BaseComponent implements OnInit {
   isModelFromUpload = false;
   constructor(
       private route: Router,
-      // private appUtilService:AppUtilService
+      private appUtilService:AppUtilService
   ) { 
 
   }
@@ -60,8 +63,16 @@ export class BaseComponent implements OnInit {
     this.loading=false
     // this.appUtilService.sendBI(false);
   }
-  showNotification(notif:Notification){
-    // this.appUtilService.sendShowNotification(notif);
+  private showNotification(notif:Notification){
+    this.appUtilService.notify(notif);
+  }
+  showSuccess(msg:string="Operation Successful", title:string="Success")
+  {
+    this.showNotification({ message:msg,title:title,notificationType:NotificationType.Success} as Notification)
+  }
+  showError(msg:string, title:string="Error")
+  {
+    this.showNotification({ message:msg,title:title,notificationType:NotificationType.Error} as Notification)
   }
 
   start() { this.dataLoading = true; }

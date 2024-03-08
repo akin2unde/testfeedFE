@@ -12,7 +12,8 @@ export class SideBarComponent {
     {name:'Dashboard', isActive:true,img:'', url:'home'},
     {name:'Projects', isActive:false,img:'',url:'project'},
     {name:'Tasks', isActive:false,img:'',url:'task'},
-    {name:'Test4', isActive:false,img:'',url:'login'},
+    {name:'Requests', isActive:false,img:'',url:'request'},
+    {name:'Features', isActive:false,img:'',url:'feature'},
     {name:'Settings', isActive:false,img:'',url:'login'}
   ]
   constructor(
