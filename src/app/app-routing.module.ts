@@ -22,7 +22,7 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./core/components/main/main/main.module').then(
+      import('./core/components/main/main.module').then(
         (m) => m.MainModule
       ),
   },

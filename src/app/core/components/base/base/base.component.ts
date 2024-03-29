@@ -2,6 +2,7 @@ import { LocationStrategy, PathLocationStrategy,Location } from '@angular/common
 import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppUtilService } from 'src/app/core/services/app-util.service';
+import { HttpWebRequestService } from 'src/app/core/services/http-web-request/http-web-request.service';
 import Store, { AppKey } from 'src/app/core/utils/store';
 import { Util } from 'src/app/core/utils/util';
 import { User } from 'src/app/models/User';
@@ -32,7 +33,8 @@ export class BaseComponent implements OnInit {
   isModelFromUpload = false;
   constructor(
       private route: Router,
-      private appUtilService:AppUtilService
+      private appUtilService:AppUtilService,
+      private httpRequestClient:HttpWebRequestService
   ) { 
 
   }

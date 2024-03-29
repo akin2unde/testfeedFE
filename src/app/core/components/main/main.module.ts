@@ -4,10 +4,11 @@ import { MainComponent } from './main.component';
 import { RouterModule, Routes, mapToCanActivate } from '@angular/router';
 import { DashboardComponent } from 'src/app/views/specific/dashboard/dashboard.component';
 import { AuthGuard } from 'src/app/core/services/authGuard';
-import { SideBarModule } from '../../side-bar/side-bar.module';
-import { TopBarModule } from '../../top-bar/top-bar.module';
-import { FooterModule } from '../../footer/footer.module';
+
 import { ToastModule } from 'primeng/toast';
+import { SideBarModule } from '../side-bar/side-bar.module';
+import { FooterModule } from '../footer/footer.module';
+import { TopBarModule } from '../top-bar/top-bar.module';
 
 
 export const appRoutes: Routes = [
@@ -24,7 +25,7 @@ export const appRoutes: Routes = [
         path: 'home',
         canActivate: mapToCanActivate([AuthGuard]),
         loadChildren: () =>
-          import('../../../../views/specific/dashboard/dashboard.module').then(
+          import('../../../views/specific/dashboard/dashboard.module').then(
             (m) => m.DashboardModule
           ),
       },
@@ -32,7 +33,7 @@ export const appRoutes: Routes = [
         path: 'project',
         canActivate: mapToCanActivate([AuthGuard]),
         loadChildren: () =>
-          import('../../../../views/specific/project/project.module').then(
+          import('../../../views/specific/project/project.module').then(
             (m) => m.ProjectModule
           ),
       },
@@ -40,7 +41,7 @@ export const appRoutes: Routes = [
         path: 'task',
         canActivate: mapToCanActivate([AuthGuard]),
         loadChildren: () =>
-          import('../../../../views/specific/task/task.module').then(
+          import('../../../views/specific/task/task.module').then(
             (m) => m.TaskModule
           ),
       },
@@ -48,7 +49,7 @@ export const appRoutes: Routes = [
         path: 'feature',
         canActivate: mapToCanActivate([AuthGuard]),
         loadChildren: () =>
-          import('../../../../views/specific/feature/feature.module').then(
+          import('../../../views/specific/feature/feature.module').then(
             (m) => m.FeatureModule
           ),
       },
@@ -56,7 +57,7 @@ export const appRoutes: Routes = [
         path: 'request',
         canActivate: mapToCanActivate([AuthGuard]),
         loadChildren: () =>
-          import('../../../../views/specific/request/request.module').then(
+          import('../../../views/specific/request/request.module').then(
             (m) => m.RequestModule
           ),
       },

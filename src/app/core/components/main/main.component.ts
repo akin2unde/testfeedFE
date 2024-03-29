@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { BaseComponent } from '../../base/base/base.component';
 import { Router } from '@angular/router';
 import { AppUtilService } from 'src/app/core/services/app-util.service';
 import { MessageService } from 'primeng/api';
 import { NotificationType } from 'src/app/models/notification-type';
 import { Notification } from 'src/app/models/notification';
 import { Util } from 'src/app/core/utils/util';
+import { BaseComponent } from '../base/base/base.component';
+import { HttpWebRequestService } from '../../services/http-web-request/http-web-request.service';
 
 @Component({
   selector: 'app-main',
@@ -17,8 +18,8 @@ export class MainComponent extends BaseComponent {
   notifIcon:string='';
   notification?:Notification;
 
-  constructor(private pgRoute:Router, appUtil:AppUtilService,private messageService: MessageService) {
-    super(pgRoute,appUtil);
+  constructor(private pgRoute:Router, appUtil:AppUtilService,private messageService: MessageService,private httpRequest:HttpWebRequestService) {
+    super(pgRoute,appUtil,httpRequest);
     appUtil.notif$.subscribe(s=>{
       this.showmessage(s.message,s.title,s.notificationType);
     })
