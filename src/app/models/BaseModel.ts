@@ -6,5 +6,4 @@ export interface BaseModel{
        createdAt:Date;
        updatedAt:Date;
        state:ObjectState;
-       ssChecked:boolean;
 }

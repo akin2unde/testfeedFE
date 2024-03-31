@@ -10,7 +10,7 @@ import {
 } from "@angular/common/http";
 import { Observable, throwError } from "rxjs";
 import { retry, catchError, finalize, tap } from "rxjs/operators";
-import { User } from "src/app/models/User";
+import { User } from "src/app/models/user";
 import { ErrorResponse } from "src/app/models/ErrorResponse";
 import Store, { AppKey } from "../../utils/store";
 

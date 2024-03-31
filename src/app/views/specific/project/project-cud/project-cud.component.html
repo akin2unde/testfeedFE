@@ -1,0 +1,39 @@
+<p-sidebar  [(visible)]="show" (onHide)="show=false;notifyParentToCloseDlg.emit(show)" position="right">
+    <ng-template pTemplate="header">{{project?.state==ObjState.Unchanged?"Update Project":"New Project" }}</ng-template>
+    <ng-template pTemplate="content">
+       <div *ngIf="project" class="container h-full p-2 "> 
+        <form #fm="ngForm">
+           <div class="form-control-group" #frmControlName>
+                   <label for="name" class="form-control-label">Name:</label>
+                   <input type="text" frm-ctrl-val [minLen]=3 [blockLeadTrailSpace]="true" [parent]="frmControlName" [valueRequired]="true" id="name" name="name" #name="ngModel" [(ngModel)]="project.name" placeholder="Project name"  class="form-control-input" [class.is-invalid]="name.invalid && (name.dirty || name.touched)">
+           </div>
+           <div class="form-control-group" #frmControlDescription>
+               <label for="description" class="form-control-label">Description:</label>
+               <textarea frm-ctrl-val [parent]="frmControlDescription" [minLen]=5 [minLenError]="'Description  be more than 5 characters'"  type="text" id="name" name="description" #description="ngModel" [(ngModel)]="project.description" placeholder="Project description" required minlength="1" maxlength="250" class="form-control-input">
+               </textarea>
+           </div>
+   
+           <div class="form-control-group" #frmControlprojectType>
+               <label for="projectType" class="form-control-label">Project Type:</label>
+               <p-dropdown id="projectType" class="w-full" name="projectType" #projectType="ngModel" [options]="projectTypeEnumOptions" [(ngModel)]="project.projectType" optionLabel="name" optionValue="value"  placeholder="Select Project type"></p-dropdown>
+           </div>
+   
+           <div class="form-control-group" #frmControlcreatedBy>
+               <label for="createdBy" class="form-control-label">Created By:</label>
+               <input type="text" id="createdBy" name="createdBy" #createdBy="ngModel" [(ngModel)]="project.createdBy" placeholder="Project name"  class="form-control-input disable" >
+           </div>
+           <div class="form-control-group-row" #frmControlSatus>
+               <input type="checkbox"  id="status" name="status" #status="ngModel" [(ngModel)]="project.status"   class=" w-6 h-6 text-primary-400 bg-gray-100 border-gray-300 rounded" >
+               <label for="status" class="form-control-label">Status</label>
+           </div>
+   
+           <div class="flex justify-end w-full">
+               <button type="submit" class="btn w-24" [ngClass]="{'disable':fm.invalid}" (click)="{}">Save</button>
+           </div>
+        </form>
+       </div>
+    </ng-template>
+    <ng-template pTemplate="footer">Footer Content</ng-template>
+
+    
+</p-sidebar>

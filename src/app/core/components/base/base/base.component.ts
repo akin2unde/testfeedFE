@@ -1,11 +1,11 @@
 import { LocationStrategy, PathLocationStrategy,Location } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AppUtilService } from 'src/app/core/services/app-util.service';
 import { HttpWebRequestService } from 'src/app/core/services/http-web-request/http-web-request.service';
 import Store, { AppKey } from 'src/app/core/utils/store';
 import { Util } from 'src/app/core/utils/util';
-import { User } from 'src/app/models/User';
+import { User } from 'src/app/models/user';
 import { Notification } from 'src/app/models/notification';
 import { NotificationType } from 'src/app/models/notification-type';
 
@@ -31,16 +31,19 @@ export class BaseComponent implements OnInit {
   totalDataSize:number=0;
   user= new Store().get(AppKey.USER) as User;
   isModelFromUpload = false;
+  activareRoute= inject(ActivatedRoute)
   constructor(
       private route: Router,
       private appUtilService:AppUtilService,
       private httpRequestClient:HttpWebRequestService
   ) { 
-
+    var snapshot = this.activareRoute.snapshot;
+    appUtilService.notifySideMenu(snapshot.routeConfig.title as string)
   }
 
   ngOnInit(): void {
-
+    // var snapshot = this.activareRoute.snapshot;
+    // console.log(snapshot.url[0].path); 
   }
   getSvg(name:string,isImage:boolean=false){
    return Util.getSvg(name,isImage);

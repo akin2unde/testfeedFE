@@ -33,7 +33,7 @@ export const appRoutes: Routes = [
         path: 'project',
         canActivate: mapToCanActivate([AuthGuard]),
         loadChildren: () =>
-          import('../../../views/specific/project/project.module').then(
+          import('../../../views/specific/project/project-view/project.module').then(
             (m) => m.ProjectModule
           ),
       },

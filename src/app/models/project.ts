@@ -1,4 +1,4 @@
-import { BaseModel } from "./BaseModel";
+import { BaseModel } from "./baseModel";
 
 
 export interface Project extends BaseModel {

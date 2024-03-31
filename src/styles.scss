@@ -26,8 +26,32 @@
                      border border-solid
                       border-primary-200
 
-                      
-           
-                
-
+  }
+  .form-control-group-row{
+    @apply flex  p-1 gap-1  my-2
+  }
+  .form-control-group{
+    @apply flex flex-col p-1 gap-1  my-2
+  }
+  .form-control-label
+  {
+    @apply block text-sm font-medium text-gray-700
+  }
+  .form-control-input
+  {
+    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg outline-none focus:border-primary-300 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
+  }
+  .disable
+  {
+    @apply bg-gray-300 px-4 py-2 rounded-md cursor-not-allowed opacity-50
+  }
+  .p-sidebar
+  {
+    @apply bg-primary-100
+  }
+  .p-dropdown, .p-multiselect {
+    // border: 1.5px solid rgba(154, 159, 191, 0.2) !important;
+    // height: 40px;
+    // border-radius: 8px;
+    @apply bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:border-primary-300 w-full 
   }

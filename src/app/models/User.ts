@@ -1,7 +1,11 @@
-import { BaseModel } from "./BaseModel";
+import { BaseModel } from "./baseModel";
 
 export interface User extends BaseModel {
-        Name :string;
-        MailAddress :string;
-        Active :boolean;
+
+   name: string;
+   password: string;
+   mailAddress: string;
+   taskPoints:number;
+   status: string;
+   token:string
 }

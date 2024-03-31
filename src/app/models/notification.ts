@@ -1,4 +1,4 @@
-import { BaseModel } from "./BaseModel";
+import { BaseModel } from "./baseModel";
 import { NotificationType } from "./notification-type";
 
 export interface Notification {
