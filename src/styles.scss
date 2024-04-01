@@ -55,3 +55,7 @@
     // border-radius: 8px;
     @apply bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:border-primary-300 w-full 
   }
+  .view-header
+  {
+    @apply flex p-2 justify-between
+  }

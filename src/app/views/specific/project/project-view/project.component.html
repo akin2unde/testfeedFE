@@ -1,4 +1,37 @@
 <div class="h-full container flex flex-col">
+    <span class="font-semibold text-gray-400 m-2">Project(s)</span>
+    <div class="justify-end flex">
+        <button class="btn w-20" (click)="project=null;toggleCUDComponent(true)">New</button>
+    </div>
+    <hr class="h-px my-4 bg-primary-200 border-0 dark:bg-gray-700">
+    <!-- filter -->
+    <div class="flex gap-2 mx-4 my-3">
+        <!-- filter left -->
+    <div class="flex flex-1 gap-2">
+         <!-- All -->
+            <div class="flex gap-2">
+                <span>All</span>
+                <span class="rounded-md  border bg-control border-spacing-2 border-white text-white p-1 text-xs">20</span>
+            </div>
+            <!-- Active -->
+            <div class="flex gap-2">
+                <span class="">Active</span>
+                <span class="rounded-md  border bg-gray-600 border-spacing-2 border-white text-white p-1 text-xs">20</span>
+            </div>
+            <!-- InActive -->
+            <div class="flex gap-2">
+                <span>InActive</span>
+                <span class="rounded-md  border bg-gray-400 border-spacing-2 border-white text-white p-1 text-xs">20</span>
+            </div>   
+        </div>
+     
+        <!-- filter right -->
+        <div class="flex-grow-0 justify-end">
+            <svg ngClass="" class="w-6 h-6 text-blue-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M18 17v-2h1a1 1 0 0 0 0-2h-1a6 6 0 0 0-.4-1H17a2 2 0 0 0 2-2V8a1 1 0 0 0-2 0v2h-.5l-.5-.5V8a4 4 0 0 0-1-2.6l.7-.7c.2-.2.3-.4.3-.7V3a1 1 0 0 0-2 0v.6l-.7.6c-.8-.3-1.8-.3-2.6 0l-.7-.6V3a1 1 0 0 0-2 0v1c0 .3.1.5.3.7l.7.7A4 4 0 0 0 8 8v1.5l-.5.5H7V8a1 1 0 0 0-2 0v2a2 2 0 0 0 2 2h-.7a6 6 0 0 0-.2 1H5a1 1 0 0 0 0 2h1v2a2 2 0 0 0-2 2v2a1 1 0 1 0 2 0v-2h.8a6 6 0 0 0 4.2 3V12a1 1 0 0 1 2 0v10a6 6 0 0 0 4.2-3h.8v2a1 1 0 0 0 2 0v-2a2 2 0 0 0-2-2Zm-4-8.7a5.5 5.5 0 0 0-3-.3v.1a6 6 0 0 0-1 .3V8a2 2 0 1 1 4 0v.3Z"/>
+            </svg>
+        </div>
+    </div>
     <div class="p-4  grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"> 
       @for (item of projects; track item; let index= $index) {
            <div class=" bg-white rounded-lg shadow-lg p-4 mx-2 ">
