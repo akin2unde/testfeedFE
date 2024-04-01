@@ -45,7 +45,7 @@ export class ProjectComponent extends BaseComponent {
 
   projectCUDDlgCallback(prj:Project)
   {
-     if(prj.state== ObjectState.Changed)
+     if(prj.state== ObjectState.changed)
      {
       this.project= prj;
      }
@@ -63,7 +63,7 @@ export class ProjectComponent extends BaseComponent {
       );
     } else {
        prjs.forEach(_=>{
-        if(_.state== ObjectState.New)
+        if(_.state== ObjectState.new)
         {
           var found = res.find(w=>w.description==_.description);
           this.projects.unshift(found);

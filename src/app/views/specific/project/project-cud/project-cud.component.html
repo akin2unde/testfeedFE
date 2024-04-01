@@ -1,5 +1,5 @@
 <p-sidebar  [(visible)]="show" (onHide)="show=false;notifyParentToCloseDlg.emit(show)" position="right">
-    <ng-template pTemplate="header">{{project?.state==ObjState.Unchanged?"Update Project":"New Project" }}</ng-template>
+    <ng-template pTemplate="header">{{project?.state==ObjState.unchanged?"Update Project":"New Project" }}</ng-template>
     <ng-template pTemplate="content">
        <div *ngIf="project" class="container h-full p-2 "> 
         <form #fm="ngForm">

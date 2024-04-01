@@ -13,18 +13,17 @@ export class ProjectCudComponent
 {
   ObjState=ObjectState
   @Input() show: boolean=false;
-  @Input() project: Project;
+  @Input() project: Project={ state :ObjectState.new} as Project;
   @Output() notifyParent = new EventEmitter<Project>();
   @Output() notifyParentToCloseDlg = new EventEmitter<boolean>(this.show);
   projectTypeEnumOptions = Object.values(ProjectType).map((m) => ({ name: m, value: m }));
 
   constructor() {
-    this.project=this.project==null? {} as Project:this.project;
   }
   
   done()
   {
-    this.notifyParent.emit(this.project.state== ObjectState.Unchanged? {...this.project,state:ObjectState.Changed}:this.project)
+    this.notifyParent.emit(this.project.state== ObjectState.unchanged? {...this.project,state:ObjectState.changed}:this.project)
   }
 
 
