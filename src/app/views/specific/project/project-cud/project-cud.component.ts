@@ -1,8 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SharedModule } from 'primeng/api';
+import { DataExchangeService } from 'src/app/core/services/data-exchange.service';
 import { ObjectState } from 'src/app/models/ObjectState';
 import { Project } from 'src/app/models/project';
 import { ProjectType } from 'src/app/models/project-type';
+import { Status } from 'src/app/models/status';
 
 @Component({
   selector: 'app-project-cud',
@@ -13,17 +15,23 @@ export class ProjectCudComponent
 {
   ObjState=ObjectState
   @Input() show: boolean=false;
-  @Input() project: Project={ state :ObjectState.new} as Project;
+  @Input() project: Project;  
   @Output() notifyParent = new EventEmitter<Project>();
   @Output() notifyParentToCloseDlg = new EventEmitter<boolean>(this.show);
   projectTypeEnumOptions = Object.values(ProjectType).map((m) => ({ name: m, value: m }));
-
-  constructor() {
+  constructor() 
+  {
   }
   
+  onHide()
+  {
+    this.notifyParentToCloseDlg.emit(false)
+  }
+ 
   done()
   {
-    this.notifyParent.emit(this.project.state== ObjectState.unchanged? {...this.project,state:ObjectState.changed}:this.project)
+    this.notifyParent.emit(this.project.state== ObjectState.unchanged? {...this.project,state:ObjectState.changed}:this.project);   
+    this.show=false; 
   }
 
 

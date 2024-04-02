@@ -1,7 +1,7 @@
 <div class="h-full container flex flex-col">
     <span class="font-semibold text-gray-400 m-2">Project(s)</span>
     <div class="justify-end flex">
-        <button class="btn w-20" (click)="project=null;toggleCUDComponent(true)">New</button>
+        <button class="btn w-20" (click)="project=xchangeservice.initProjectObj();toggleCUDComponent(true)">New</button>
     </div>
     <hr class="h-px my-4 bg-primary-200 border-0 dark:bg-gray-700">
     <!-- filter -->
@@ -64,4 +64,4 @@
     </div>
    
 </div>
-<app-project-cud [show]="showCUD" [project]="project" (notifyParent)="projectCUDDlgCallback($event)" (notifyParentToCloseDlg)="toggleCUDComponent(false)"/>
+<app-project-cud *ngIf="showCUD" [show]="showCUD" [project]="project" (notifyParent)="projectCUDDlgCallback($event)" (notifyParentToCloseDlg)="toggleCUDComponent(false)"/>
