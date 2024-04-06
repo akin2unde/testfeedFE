@@ -6,26 +6,22 @@ import { DataExchangeService } from 'src/app/core/services/data-exchange.service
 import { HttpWebRequestService } from 'src/app/core/services/http-web-request/http-web-request.service';
 import { ErrorResponse } from 'src/app/models/ErrorResponse';
 import { ObjectState } from 'src/app/models/ObjectState';
-import { Project } from 'src/app/models/project';
-import { ProjectType } from 'src/app/models/project-type';
-import { Status } from 'src/app/models/status';
+import { ProjectTask } from 'src/app/models/project-task';
 
 @Component({
-  selector: 'app-project',
-  templateUrl: './project.component.html',
-  styleUrl: './project.component.scss'
+  selector: 'app-task',
+  templateUrl: './task.component.html',
+  styleUrl: './task.component.scss'
 })
-export class ProjectComponent extends BaseComponent {
-  statusEnum=Status
-  projectTypeEnum=ProjectType
-  projects:Project[]=[];
-  showCUD=false;
-  project:Project;
+export class TaskComponent extends BaseComponent {
+  projectTasks:ProjectTask[]=[];
+  projectTask:ProjectTask;
+  showCUD=false
   constructor(private pgRoute:Router, appUtil:AppUtilService,
     private httpRequest:HttpWebRequestService, public xchangeservice:DataExchangeService) {
     super(pgRoute,appUtil,httpRequest);
   }
-   override async ngOnInit(): Promise<void>
+  override async ngOnInit(): Promise<void>
   {
     await this.getData()
   }
@@ -33,14 +29,17 @@ export class ProjectComponent extends BaseComponent {
   {
     this.start();
     const res =  await this.httpRequest.get(
-          `project/getAll/0/20`
+          `project-task/getAll/0/20`
         );
     if (res instanceof ErrorResponse) {
       this.showError( res.message,
       );
     } else {
-      var result = res as Project[] ;
-      this.projects=result;
+      var result = res as ProjectTask[] ;
+      result.forEach(_=>{
+        _.actors= _.taskObjs.map(m=>{return m.actor});
+      });
+      this.projectTasks=result;
     }
     this.end(); 
   }
@@ -49,33 +48,33 @@ export class ProjectComponent extends BaseComponent {
      this.showCUD=state;
   }
 
- async projectCUDDlgCallback(prj:Project)
+ async taskCUDDlgCallback(obj:ProjectTask)
   {
      this.toggleCUDComponent(false);
-     this.project= prj;
+     this.projectTask= obj;
      await this.save();
   }
 
-  async save(prjs:Project[]=[this.project])
+  async save(data:ProjectTask[]=[this.projectTask])
   {
     this.start();
-    const res =  await this.httpRequest.post<Project[]|ErrorResponse>(
-          `project/save`,prjs
+    const res =  await this.httpRequest.post<ProjectTask[]|ErrorResponse>(
+          `Project-task/save`,data
         );
     if (res instanceof ErrorResponse) {
       this.showError( res.message,
       );
     } else {
-       prjs.forEach(_=>{
+       data.forEach(_=>{
         if(_.state== ObjectState.new)
         {
           var found = res.find(w=>w.description==_.description);
-          this.projects.unshift(found);
+          this.projectTasks.unshift(found);
         }
         else if(_.state== ObjectState.Removed)
         {
           var foundIndex = res.findIndex(w=>w.description==_.description);
-          this.projects.splice(foundIndex,1);
+          this.projectTasks.splice(foundIndex,1);
         }
        });
     }

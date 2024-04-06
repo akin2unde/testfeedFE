@@ -12,6 +12,6 @@ export interface ProjectTask extends BaseModel{
    closeBy: string;
    description: string;
    taskObjs: Task[];
-
+   actors:string[];
 }
 

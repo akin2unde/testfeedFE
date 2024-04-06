@@ -7,7 +7,7 @@ import { ToastModule } from 'primeng/toast';
 import { SidebarModule } from 'primeng/sidebar';
 import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
-
+import { TooltipModule } from 'primeng/tooltip';
 import { FormControlValidatorDirective } from '../directives/form-control-validator.directive';
 
 
@@ -44,6 +44,7 @@ import { FormControlValidatorDirective } from '../directives/form-control-valida
     DialogModule,
     FormControlValidatorDirective,
     DropdownModule,
+    TooltipModule,
     // PasswordModule,
     // CardModule,
     // SidebarModule,
