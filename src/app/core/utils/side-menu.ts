@@ -4,4 +4,5 @@ export interface SideMenu
     isActive:boolean;
     img:string;
     url:string
+    children:string[]
 }

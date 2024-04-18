@@ -1,8 +1,13 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 import { AES, enc, mode, pad } from "crypto-js";
+import { SideMenu } from "./side-menu";
 
 export class Util {
-    static appSecreteKey= 'tsdNG001RN#@_5';
+     static appSecreteKey= 'tsdNG001RN#@_5';
+     private static PROJECT_BASE_URL='project';
+     private static PROJECT_TASK_BASE_URL='project-task';
+
+     static GET_ALL_PROJECT=`${this.PROJECT_BASE_URL}/getAll/`
      static  encode(plainText:string):string
      {
        let key = enc.Utf8.parse(Util.appSecreteKey);
@@ -16,6 +21,21 @@ export class Util {
        let imagePath: string = "../../assets/images/";
        return isImage?imagePath+name:iconPath+name;
      }
+     static getReusableRoutes()
+     {
+      return ['task'];
+     }
+     static getAllMenus():SideMenu[]{
+     return[
+      {name:'Dashboard', isActive:true,img:'', url:'home',children:[]},
+      {name:'Project', isActive:false,img:'',url:'project',children:[]},
+      {name:'Task', isActive:false,img:'',url:'task',children:["Project Task Detail"]},
+      {name:'Request', isActive:false,img:'',url:'request',children:[]},
+      {name:'Feature', isActive:false,img:'',url:'feature',children:[]},
+      {name:'Setting', isActive:false,img:'',url:'login',children:[]}
+    ] as SideMenu[]
+  }
+     
 }
 export function validMail(): ValidatorFn 
 {

@@ -1,10 +1,14 @@
 <div  class="container h-full p-2 "> 
-    <span class="font-semibold text-gray-400 m-2">Task(s)</span>
-    <div class="justify-end flex">
-        <button class="btn w-20" (click)="task=xchangeservice.initTaskObj();show=true">New</button>
+    <!-- Items -->
+    <div class="flex gap-2">
+        <img (click)="goBack()" [src]="getSvg('back.svg')" pTooltip="Back" tooltipPosition="top"  class="object-contain cursor-pointer"/>
+        <span class="font-semibold text-gray-400 m-2">Task(s)</span>
+    </div>
+    <div  class="justify-end flex gap-5">
+        <button *ngIf="obj.state==ObjState.new" class="btn w-20 bg-primary-dark" (click)="task=xchangeservice.initTaskObj();show=true">New</button>
+        <button *ngIf="obj.status!=taskStatusEnum.completed" class="btn w-20" (click)="save()">Save</button>
     </div>
     <hr class="h-px my-4 bg-primary-200 border-0 dark:bg-gray-700">
-      <!-- Items -->
       <div class="p-4  grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"> 
         @for (item of obj.taskObjs; track item; let index= $index) {
              <div class=" bg-white rounded-lg shadow-lg p-4 mx-2 ">
@@ -57,39 +61,42 @@
     <ng-template pTemplate="header">{{task?.state==ObjState.unchanged?"Update Task":"New Task" }}</ng-template>
     <ng-template pTemplate="content">
        <div  class="container h-full p-2 "> 
-        <form #fm="ngForm">
+        <form #fm="ngForm" (ngSubmit)="done()">
            <div class="form-control-group" #frmControlName>
                    <label for="name" class="form-control-label">Name:</label>
-                   <input type="text" frm-ctrl-val [minLen]=3 [blockLeadTrailSpace]="true" [parent]="frmControlName" [valueRequired]="true" id="name" name="name" #name="ngModel" [(ngModel)]="task.name" placeholder="Project name"  class="form-control-input">
+                   <input [disabled]="task.currentStatus!=taskStatusEnum.pending" type="text" frm-ctrl-val [minLen]=3 [blockLeadTrailSpace]="true" [parent]="frmControlName" [valueRequired]="true" id="name" name="name" #name="ngModel" [(ngModel)]="task.name" placeholder="Project name"  class="form-control-input">
            </div>
            <div class="form-control-group" #frmControlDescription>
                <label for="description" class="form-control-label">Description:</label>
-               <textarea frm-ctrl-val [parent]="frmControlDescription" [minLen]=5 [minLenError]="'Description  be more than 5 characters'"  type="text" id="name" name="description" #description="ngModel" [(ngModel)]="task.description" placeholder="Project description" required minlength="1" maxlength="250" class="form-control-input">
+               <textarea [disabled]="task.currentStatus!=taskStatusEnum.pending" frm-ctrl-val [parent]="frmControlDescription" [minLen]=5 [minLenError]="'Description  be more than 5 characters'"  type="text" id="name" name="description" #description="ngModel" [(ngModel)]="task.description" placeholder="Project description" required minlength="1" maxlength="250" class="form-control-input">
                </textarea>
            </div>
-   
            <div class="form-control-group" #frmControlproject>
                <label for="project" class="form-control-label">Project:</label>
-               <p-dropdown id="project" class="w-full" name="project" #project="ngModel" [options]="projectTypeEnumOptions" [(ngModel)]=" task.project" optionLabel="name" optionValue="value"  placeholder="Select Project"></p-dropdown>
+               <p-dropdown [disabled]="task.currentStatus!=taskStatusEnum.pending" id="project" class="w-full" name="project" #project="ngModel" [options]="projects" [(ngModel)]=" task.project" optionLabel="name" optionValue="value"  placeholder="Select Project"></p-dropdown>
            </div>
            <div class="form-control-group" #frmControlactor>
                 <label for="actor" class="form-control-label">Actor:</label>
-                <p-dropdown id="actor" class="w-full" name="actor" #actor="ngModel" [options]="projectTypeEnumOptions" [(ngModel)]=" task.actor" optionLabel="name" optionValue="value"  placeholder="Select Actor"></p-dropdown>
+                <p-dropdown [disabled]="task.currentStatus!=taskStatusEnum.pending" id="actor" class="w-full" name="actor" #actor="ngModel" [options]="actors" [(ngModel)]=" task.actor" optionLabel="name" optionValue="value"  placeholder="Select Actor"></p-dropdown>
            </div>
            <div class="form-control-group" #frmControltaskType>
                 <label for="taskType" class="form-control-label">Task Type:</label>
-                <p-dropdown id="taskType" class="w-full" name="taskType" #taskType="ngModel" [options]="projectTypeEnumOptions" [(ngModel)]=" task.taskType" optionLabel="name" optionValue="value"  placeholder="Select Type"></p-dropdown>
+                <p-dropdown [disabled]="task.currentStatus!=taskStatusEnum.pending" id="taskType" class="w-full" name="taskType" #taskType="ngModel" [options]="taskTypeEnumOptions" [(ngModel)]=" task.taskType" optionLabel="name" optionValue="value"  placeholder="Select Type"></p-dropdown>
            </div>
+           <div *ngIf="task.state!= ObjState.new" class="form-control-group" #frmControltaskStatus>
+                <label for="status" class="form-control-label">Change Status:</label>
+                <p-dropdown  id="status" class="w-full" name="status" #status="ngModel" [options]="taskStatusEnumOptions" [(ngModel)]=" task.currentStatus" optionLabel="name" optionValue="value"  placeholder="Select Status"></p-dropdown>
+          </div>
            <div class="form-control-group" >
                 <label for="allowPoint" class="form-control-label">Allow Point:</label>
-                <p-inputSwitch name="allowPoint"  [(ngModel)]="task.allowPoint"></p-inputSwitch>
+                <p-inputSwitch [disabled]="task.currentStatus!=taskStatusEnum.pending" name="allowPoint"  [(ngModel)]="task.allowPoint"></p-inputSwitch>
            </div>
            <div *ngIf="task.allowPoint" class="form-control-group" #frmControltaskPoint>
                 <label for="taskPoint" class="form-control-label">Point:</label>
-                <input type="text"  frm-ctrl-val [minLen]=1 [blockLeadTrailSpace]="true" [parent]="frmControltaskPoint"  id="taskPoint" name="taskPoint" #taskPoint="ngModel" [(ngModel)]="task.taskPoint" placeholder="Task point"  class="form-control-input">
+                <input type="text" [disabled]="task.currentStatus!=taskStatusEnum.pending" frm-ctrl-val [minLen]=1 [blockLeadTrailSpace]="true" [parent]="frmControltaskPoint"  id="taskPoint" name="taskPoint" #taskPoint="ngModel" [(ngModel)]="task.taskPoint" placeholder="Task point"  class="form-control-input">
            </div>
-           <div class="flex justify-end w-full">
-               <button type="submit" class="btn w-24" [ngClass]="{'disable':fm.invalid}" (click)="done()">Save</button>
+           <div *ngIf="obj.status!=taskStatusEnum.completed" class="flex justify-end w-full">
+               <button type="submit" class="btn w-24" [ngClass]="{'disable':fm.invalid}" >Done</button>
            </div>
         </form>
        </div>

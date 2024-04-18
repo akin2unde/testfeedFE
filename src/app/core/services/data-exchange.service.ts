@@ -7,15 +7,19 @@ import { ProjectType } from 'src/app/models/project-type';
 import { Status } from 'src/app/models/status';
 import { Task } from 'src/app/models/task';
 import { TaskStatus } from 'src/app/models/task-status';
+import { HttpWebRequestService } from './http-web-request/http-web-request.service';
+import { ErrorResponse } from 'src/app/models/ErrorResponse';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataExchangeService {
   private project = new Subject<Project>();
-  constructor() { 
+  constructor(private httpRequest:HttpWebRequestService) { 
 
   }
+
+
   public getProject(): Observable<Project> {
     return this.project.asObservable();
   }
@@ -32,6 +36,6 @@ export class DataExchangeService {
   }
   initTaskObj():Task
   {
-    return { state :ObjectState.new, currentStatus: TaskStatus.pending,description:'',allowPoint:true,project:'',projectType:ProjectType.full} as Task;
+    return { createdAt:new Date(), state :ObjectState.new, currentStatus: TaskStatus.pending,description:'',allowPoint:true,project:'',projectType:ProjectType.full} as Task;
   }
 }

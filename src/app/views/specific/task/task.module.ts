@@ -15,7 +15,6 @@ export const appRoutes: Routes = [
     children: [
       {
         path: '',
-        pathMatch: 'full',
         loadChildren: () => import('./task-view/project-task.module').then(m => m.ProjectTaskModule)
       },
       {

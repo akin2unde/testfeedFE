@@ -12,6 +12,7 @@ export interface Task extends BaseModel
    createdBy:string
    projectType: string;
    currentStatus: TaskStatus;
+   previousStatus: TaskStatus;
    closeBy:string;
    startAt:Date;
    endAt:Date;

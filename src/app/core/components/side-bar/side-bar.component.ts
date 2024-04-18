@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SideMenu } from '../../utils/side-menu';
 import { Router } from '@angular/router';
 import { AppUtilService } from '../../services/app-util.service';
+import { Util } from '../../utils/util';
 
 @Component({
   selector: 'app-side-bar',
@@ -9,19 +10,12 @@ import { AppUtilService } from '../../services/app-util.service';
   styleUrl: './side-bar.component.scss'
 })
 export class SideBarComponent implements OnInit {
-  menus:SideMenu[]=[
-    {name:'Dashboard', isActive:true,img:'', url:'home'},
-    {name:'Project', isActive:false,img:'',url:'project'},
-    {name:'Task', isActive:false,img:'',url:'task'},
-    {name:'Request', isActive:false,img:'',url:'request'},
-    {name:'Feature', isActive:false,img:'',url:'feature'},
-    {name:'Setting', isActive:false,img:'',url:'login'}
-  ]
+ menus= Util.getAllMenus();
   constructor(private route: Router, private appUtilService:AppUtilService) 
   {
     appUtilService.sideMenu$.subscribe(s=>{
-      if(this.menus.find(a=>a.isActive && a.name==s)==null)
-      this.changeMenuSelection(this.menus.find(f=>f.name==s),false)
+      if(this.menus.find(a=>(a.isActive && a.name==s) && a.children.find(f=>f==s))==null)
+      this.changeMenuSelection(this.menus.find(f=>f.name==s || f.children.find(a=>a==s)),false)
     });
   }
   ngOnInit()

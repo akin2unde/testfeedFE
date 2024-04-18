@@ -23,8 +23,6 @@ export class HttpWebRequestService {
       error: (err) => resolve(new ErrorResponse(err))
     });})
   }
-
-
   post<T>(url: string, body: any): Promise<T|ErrorResponse> {
     return new Promise((resolve, reject) => {
       this.http

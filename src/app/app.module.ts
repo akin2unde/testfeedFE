@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppInterceptorService } from './core/services/app-interceptor/app-interceptor.service';
+import { CustomRouteReuseStrategy } from './core/utils/custom-route-reuse-strategy';
+import { RouteReuseStrategy } from '@angular/router';
 // import { AppInterceptorService } from './shared/services/app-interceptor/app-interceptor.service';
 // import { SharedModule } from './shared/modules/shared.module';
 
@@ -29,6 +31,10 @@ import { AppInterceptorService } from './core/services/app-interceptor/app-inter
     useClass: AppInterceptorService,
     multi: true
     },
+    // {
+    //   provide: RouteReuseStrategy,
+    //   useClass: CustomRouteReuseStrategy,
+    // },
   ],
   bootstrap: [AppComponent]
 })

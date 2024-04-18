@@ -8,6 +8,7 @@ import { Util } from 'src/app/core/utils/util';
 import { User } from 'src/app/models/user';
 import { Notification } from 'src/app/models/notification';
 import { NotificationType } from 'src/app/models/notification-type';
+import { ErrorResponse } from 'src/app/models/ErrorResponse';
 
 @Component({
 
@@ -34,7 +35,7 @@ export class BaseComponent implements OnInit {
   activareRoute= inject(ActivatedRoute)
   constructor(
       private route: Router,
-      private appUtilService:AppUtilService,
+      public appUtilService:AppUtilService,
       private httpRequestClient:HttpWebRequestService
   ) { 
     var snapshot = this.activareRoute.snapshot;
