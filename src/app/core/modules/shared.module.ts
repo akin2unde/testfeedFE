@@ -9,6 +9,7 @@ import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { TooltipModule } from 'primeng/tooltip';
 import { FormControlValidatorDirective } from '../directives/form-control-validator.directive';
+import { InputSwitchModule } from 'primeng/inputswitch';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { FormControlValidatorDirective } from '../directives/form-control-valida
     FormControlValidatorDirective,
     DropdownModule,
     TooltipModule,
-    // PasswordModule,
+    InputSwitchModule
+        // PasswordModule,
     // CardModule,
     // SidebarModule,
    

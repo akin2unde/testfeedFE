@@ -1,7 +1,7 @@
 <div class="h-full container flex flex-col">
     <span class="font-semibold text-gray-400 m-2">Project(s)</span>
     <div class="justify-end flex">
-        <button class="btn w-20" (click)="projectTask=xchangeservice.initTaskProjectObj();toggleCUDComponent(true)">New</button>
+        <button class="btn w-20" (click)="projectTask=xchangeservice.initTaskProjectObj();goToPageChild(['project-task-detail','new'])">New</button>
     </div>
     <hr class="h-px my-4 bg-primary-200 border-0 dark:bg-gray-700">
       <!-- Items -->
@@ -39,7 +39,7 @@
                 </div>
                 <!-- action buttons edit and delete -->
                 <div class="flex flex-1 justify-end gap-3">
-                    <img [src]="getSvg('pencil.svg')" class="object-contain w-[26px] cursor-pointer"/>
+                    <img [src]="getSvg('pencil.svg')" (click)="goToPageChild(['project-task-detail',item.code])" class="object-contain w-[26px] cursor-pointer"/>
                     <img [src]="getSvg('trash-x.svg')" class="object-contain w-[26px] cursor-pointer"/>
                 </div>
             </div>
@@ -51,4 +51,5 @@
 
       </div>
 </div>
-<app-project-task-cud *ngIf="showCUD" [show]="showCUD" [obj]="projectTask" (notifyParent)="taskCUDDlgCallback($event)" (notifyParentToCloseDlg)="toggleCUDComponent(false)"/>
+
+<!-- <app-project-task-cud *ngIf="showCUD" [show]="showCUD" [obj]="projectTask" (notifyParent)="taskCUDDlgCallback($event)" /> -->

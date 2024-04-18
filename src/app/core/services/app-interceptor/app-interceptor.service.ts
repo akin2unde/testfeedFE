@@ -29,7 +29,7 @@ export class AppInterceptorService implements HttpInterceptor {
         // .set("Access-Control-Allow-Headers", "X-Requested-With")
         // .set("Access-Control-Allow-Credentials", "true")
         // .set("Authorization",  (user && (user as User).Token?(user as User).Token:defaultToken))
-        .set("Authorization",  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsQWRkcmVzcyI6ImFraW4ydW5kZUBob3RtYWlsLmNvbSIsImNvZGUiOiJVU1ItMzc2Njg1NjY1NiIsImlhdCI6MTcxMjM5Nzg5NywiZXhwIjoxNzEzMDAyNjk3fQ.uaz9_9sL0bD_x6shmT0-J9Wx-Kr256yEEyloPHvL5mM")
+        .set("Authorization",  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYWlsQWRkcmVzcyI6ImFraW4ydW5kZUBob3RtYWlsLmNvbSIsImNvZGUiOiJVU1ItMzc2Njg1NjY1NiIsImlhdCI6MTcxMzI4MjA2MSwiZXhwIjoxNzEzODg2ODYxfQ.So5zU8zBXfv-A1RJhs3iB7kEX2SnW8n6UMyoBjaEn2o")
 
         // .set("Access-Control-Allow-Methods", "POST,GET,PUT,DELETE,OPTIONS")
     });

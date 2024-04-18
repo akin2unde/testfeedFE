@@ -9,6 +9,7 @@ import { ToastModule } from 'primeng/toast';
 import { SideBarModule } from '../side-bar/side-bar.module';
 import { FooterModule } from '../footer/footer.module';
 import { TopBarModule } from '../top-bar/top-bar.module';
+import { ProjectTaskCudComponent } from 'src/app/views/specific/task/project-task-cud/project-task-cud.component';
 
 
 export const appRoutes: Routes = [

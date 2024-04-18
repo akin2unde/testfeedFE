@@ -29,6 +29,7 @@ export class SideBarComponent implements OnInit {
   }
   changeMenuSelection(menu:SideMenu,executeRoute:boolean=true)
   {
+    menu=!menu?this.menus[0]:menu;
     this.menus.forEach(f=>{
       f.isActive= f.name==menu.name
     });

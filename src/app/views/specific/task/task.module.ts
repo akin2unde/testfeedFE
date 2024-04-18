@@ -4,20 +4,33 @@ import { TaskComponent } from './task-view/task.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ProjectTaskCudComponent } from './project-task-cud/project-task-cud.component';
 import { SharedModule } from 'src/app/core/modules/shared.module';
+import { TaskMainComponent } from './task-main/task-main.component';
 
 
 
 export const appRoutes: Routes = [
-  { path: "", component: TaskComponent,title:"Task" },
-  { path: "task", component: TaskComponent, title:"Task"}
+  {
+    path: '',
+    component: TaskMainComponent,
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        loadChildren: () => import('./task-view/project-task.module').then(m => m.ProjectTaskModule)
+      },
+      {
+        path: 'project-task-detail/:id',
+        loadChildren: () => import('./project-task-cud/project-task-cud.module').then(m => m.ProjectTaskCUDModule)
+      },
+    ],
+    title:'Task'//important to load the default route
+  },
 ];
 @NgModule({
-  declarations: [TaskComponent,ProjectTaskCudComponent],
+  declarations:[TaskMainComponent],
   imports: [
-
     SharedModule,
     RouterModule.forChild(appRoutes),
-
   ]
 })
 export class TaskModule { }

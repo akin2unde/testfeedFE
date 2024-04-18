@@ -43,16 +43,13 @@ export class TaskComponent extends BaseComponent {
     }
     this.end(); 
   }
-  toggleCUDComponent(state:boolean)
-  {
-     this.showCUD=state;
-  }
+
 
  async taskCUDDlgCallback(obj:ProjectTask)
   {
-     this.toggleCUDComponent(false);
-     this.projectTask= obj;
-     await this.save();
+    //  this.toggleCUDComponent(false);
+    //  this.projectTask= obj;
+    //  await this.save();
   }
 
   async save(data:ProjectTask[]=[this.projectTask])

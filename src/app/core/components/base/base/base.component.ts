@@ -57,6 +57,10 @@ export class BaseComponent implements OnInit {
       this.route.navigateByUrl(`/${page}`);
     }
   }
+  goToPageChild(arr:string[]){
+   
+      this.route.navigate(arr,{relativeTo:this.activareRoute});
+  }
   goBack(){
     this.location.back();
   }
